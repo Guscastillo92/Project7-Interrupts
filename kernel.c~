@@ -1,27 +1,42 @@
 
-void printToScreen(char letter,int location);
+void printString(char* string);
+void readString(char* string);
 
 
 int main() {
-	printToScreen('H', 0x8140);
-	printToScreen('E', 0x8142);
-	printToScreen('L', 0x8144);
-	printToScreen('L', 0x8146);
-	printToScreen('O', 0x8148);
-	printToScreen(' ', 0x8150);
-	printToScreen('W', 0x8152);
-	printToScreen('O', 0x8154);
-	printToScreen('R', 0x8156);
-	printToScreen('L', 0x8158);
-	printToScreen('D', 0x815A);
-
-
-	
+	char line[80];
+	printString("Hello World \0");
+	readString(line);
+	printString(line);
 	while(1){
 	};
 }
 
-void printToScreen(char letter, int location){
-	putInMemory(0xB000, location, letter);
-	putInMemory(0xB000, location+1, 0x7);
+void printString(char* string){
+	int position = 0;
+	while(string[position] != '\0'){
+		interrupt(0x10, 0xE*256+string[position], 0, 0, 0);
+		position = position +1;
+	}
+}
+void readString(char* string){
+	int position = 0;
+	char character = 0x0;
+	while(character != 0xd){
+		character = interrupt(0x16, 0, 0, 0, 0);
+		if(character == 0xd){
+			break;
+		}
+		else if(character == 0x8){
+			position = position -1;
+			interrupt(0x10, 0xE*256+character, 0, 0, 0);
+		}
+		else {
+			string[position] = character;
+			position = position +1;
+			interrupt(0x10, 0xE*256+character, 0, 0, 0);
+		}
+	}
+	string[position] = 0xa;
+	string[position+1]= 0x0;
 }
