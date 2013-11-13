@@ -7,9 +7,10 @@ int div(int a, int b);
 void handleInterrupt21(int ax, int bx, int cx, int dx);
 
 int main() {
+	char line[80];
 	makeInterrupt21();
-	interrupt(0x21,0,0,0,0);
-
+	interrupt(0x21,1,line,0,0);
+	interrupt(0x21,0,line,0,0);
 
 
 	while(1){
@@ -72,8 +73,8 @@ void handleInterrupt21(int ax, int bx, int cx, int dx){
 	
 	
 	if(ax == 0){
-		while(*bx != '\0'){
-			interrupt(0x10, 0xE*256+*bx, 0, 0, 0);
+		while( bx != '\0'){
+			interrupt(0x10, 0xE*256+bx, 0, 0, 0);
 			bx= bx+1;
 		}
 	} else if (ax == 1){
@@ -86,19 +87,20 @@ void handleInterrupt21(int ax, int bx, int cx, int dx){
 			}
 			else if(character == 0x8){
 				if(bx > base){
-					position = position -1;
+					bx = bx -1;
 					interrupt(0x10, 0xE*256+character, 0, 0, 0);
 				}
 			}
 			else {
-				*bx = character;
-				position = position +1;
+				bx = character;
+				bx = bx +1;
 				interrupt(0x10, 0xE*256+character, 0, 0, 0);
 			}
 		}
 		interrupt(0x10, 0xE*256+0xa, 0, 0, 0);
-		*bx = 0xa;
-		*bx= 0x0;
+		bx = 0xa;
+		bx = bx+1;
+		bx = 0x0;
 
 	} else if (ax == 2){
 

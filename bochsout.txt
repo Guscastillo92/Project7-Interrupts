@@ -32,13 +32,13 @@
 00000000000i[     ]   SB16 support: no
 00000000000i[     ]   USB support: no
 00000000000i[     ]   VGA extension support: vbe 
-00000000000i[MEM0 ] allocated memory at 0xb51d1008. after alignment, vector=0xb51d2000
+00000000000i[MEM0 ] allocated memory at 0xb51f1008. after alignment, vector=0xb51f2000
 00000000000i[MEM0 ] 32.00MB
 00000000000i[MEM0 ] rom at 0xfffe0000/131072 ('/usr/local/share/bochs/BIOS-bochs-latest')
 00000000000i[MEM0 ] rom at 0xc0000/38400 ('/usr/local/share/bochs/VGABIOS-lgpl-latest')
 00000000000e[DEV  ] Bochs is not compiled with PCI support
 00000000000i[CMOS ] Using local time for initial clock
-00000000000i[CMOS ] Setting initial clock to: Tue Nov 12 18:46:19 2013 (time0=1384303579)
+00000000000i[CMOS ] Setting initial clock to: Tue Nov 12 19:35:33 2013 (time0=1384306533)
 00000000000i[DMA  ] channel 4 used by cascade
 00000000000i[DMA  ] channel 2 used by Floppy Drive
 00000000000i[FDD  ] fd0: 'floppya.img' ro=0, h=2,t=80,spt=18
@@ -88,25 +88,50 @@
 00000565277i[VGA  ] VBE known Display Interface b0c4
 00000568202i[VBIOS] VBE Bios $Id: vbe.c,v 1.58 2006/08/19 09:39:43 vruppert Exp $
 00001357315i[BIOS ] Booting from 0000:7C00
-00150155527p[TGUI ] >>PANIC<< Received SIGHUP: quit simulation
-00150155527i[CPU  ] real mode
-00150155527i[CPU  ] CS.d_b = 16 bit
-00150155527i[CPU  ] SS.d_b = 16 bit
-00150155527i[CPU  ] | EAX=00000000  EBX=00000000  ECX=00000000  EDX=00000000
-00150155527i[CPU  ] | ESP=0000ffea  EBP=0000ffee  ESI=ffff0252  EDI=00080000
-00150155527i[CPU  ] | IOPL=0 id vip vif ac vm rf nt of df if tf SF zf af pf cf
-00150155527i[CPU  ] | SEG selector     base    limit G D
-00150155527i[CPU  ] | SEG sltr(index|ti|rpl)     base    limit G D
-00150155527i[CPU  ] |  CS:1000( 0004| 0|  0) 00010000 0000ffff 0 0
-00150155527i[CPU  ] |  DS:1000( 0005| 0|  0) 00010000 0000ffff 0 0
-00150155527i[CPU  ] |  SS:1000( 0005| 0|  0) 00010000 0000ffff 0 0
-00150155527i[CPU  ] |  ES:1000( 0005| 0|  0) 00010000 0000ffff 0 0
-00150155527i[CPU  ] |  FS:0000( 0005| 0|  0) 00000000 0000ffff 0 0
-00150155527i[CPU  ] |  GS:0000( 0005| 0|  0) 00000000 0000ffff 0 0
-00150155527i[CPU  ] | EIP=0000001e (0000001e)
-00150155527i[CPU  ] | CR0=0x00000010 CR1=0 CR2=0x00000000
-00150155527i[CPU  ] | CR3=0x00000000 CR4=0x00000000
-00150155527i[CPU  ] >> jmp .+0xfffe (0x0001001e) : EBFE
-00150155527i[CMOS ] Last time is 1384303594 (Tue Nov 12 18:46:34 2013)
-00150155527i[     ] restoring default signal behavior
-00150155527i[CTRL ] quit_sim called with exit code 1
+00144010000i[KBD  ] internal keyboard buffer full, ignoring scancode.(23)
+00144010000i[KBD  ] internal keyboard buffer full, ignoring scancode.(a3)
+00144010000i[KBD  ] internal keyboard buffer full, ignoring scancode.(aa)
+00147900000i[KBD  ] internal keyboard buffer full, ignoring scancode.(12)
+00147900000i[KBD  ] internal keyboard buffer full, ignoring scancode.(92)
+00152630000i[KBD  ] internal keyboard buffer full, ignoring scancode.(26)
+00152630000i[KBD  ] internal keyboard buffer full, ignoring scancode.(a6)
+00156890000i[KBD  ] internal keyboard buffer full, ignoring scancode.(26)
+00156890000i[KBD  ] internal keyboard buffer full, ignoring scancode.(a6)
+00161010000i[KBD  ] internal keyboard buffer full, ignoring scancode.(18)
+00161010000i[KBD  ] internal keyboard buffer full, ignoring scancode.(98)
+00168530000i[KBD  ] internal keyboard buffer full, ignoring scancode.(e0)
+00168530000i[KBD  ] internal keyboard buffer full, ignoring scancode.(1c)
+00168530000i[KBD  ] internal keyboard buffer full, ignoring scancode.(e0)
+00168530000i[KBD  ] internal keyboard buffer full, ignoring scancode.(9c)
+00259540000i[KBD  ] internal keyboard buffer full, ignoring scancode.(2a)
+00259540000i[KBD  ] internal keyboard buffer full, ignoring scancode.(14)
+00259540000i[KBD  ] internal keyboard buffer full, ignoring scancode.(94)
+00259540000i[KBD  ] internal keyboard buffer full, ignoring scancode.(aa)
+00263160000i[KBD  ] internal keyboard buffer full, ignoring scancode.(12)
+00263160000i[KBD  ] internal keyboard buffer full, ignoring scancode.(92)
+00265210000i[KBD  ] internal keyboard buffer full, ignoring scancode.(1f)
+00265210000i[KBD  ] internal keyboard buffer full, ignoring scancode.(9f)
+00268330000i[KBD  ] internal keyboard buffer full, ignoring scancode.(14)
+00268330000i[KBD  ] internal keyboard buffer full, ignoring scancode.(94)
+00516620728p[TGUI ] >>PANIC<< Received SIGHUP: quit simulation
+00516620728i[CPU  ] real mode
+00516620728i[CPU  ] CS.d_b = 16 bit
+00516620728i[CPU  ] SS.d_b = 16 bit
+00516620728i[CPU  ] | EAX=00000000  EBX=00000000  ECX=00000000  EDX=00000000
+00516620728i[CPU  ] | ESP=0000ffea  EBP=0000ffee  ESI=ffff0362  EDI=00080000
+00516620728i[CPU  ] | IOPL=0 id vip vif ac vm rf nt of df if tf SF zf af pf cf
+00516620728i[CPU  ] | SEG selector     base    limit G D
+00516620728i[CPU  ] | SEG sltr(index|ti|rpl)     base    limit G D
+00516620728i[CPU  ] |  CS:1000( 0004| 0|  0) 00010000 0000ffff 0 0
+00516620728i[CPU  ] |  DS:1000( 0005| 0|  0) 00010000 0000ffff 0 0
+00516620728i[CPU  ] |  SS:1000( 0005| 0|  0) 00010000 0000ffff 0 0
+00516620728i[CPU  ] |  ES:1000( 0005| 0|  0) 00010000 0000ffff 0 0
+00516620728i[CPU  ] |  FS:0000( 0005| 0|  0) 00000000 0000ffff 0 0
+00516620728i[CPU  ] |  GS:0000( 0005| 0|  0) 00000000 0000ffff 0 0
+00516620728i[CPU  ] | EIP=0000001e (0000001e)
+00516620728i[CPU  ] | CR0=0x00000010 CR1=0 CR2=0x00000000
+00516620728i[CPU  ] | CR3=0x00000000 CR4=0x00000000
+00516620728i[CPU  ] >> jmp .+0xfffe (0x0001001e) : EBFE
+00516620728i[CMOS ] Last time is 1384306584 (Tue Nov 12 19:36:24 2013)
+00516620728i[     ] restoring default signal behavior
+00516620728i[CTRL ] quit_sim called with exit code 1
