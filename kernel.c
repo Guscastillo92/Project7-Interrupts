@@ -1,13 +1,15 @@
 
 void printString(char* string);
 void readString(char* string);
-
+void readSector(char* buffer, int sector);
+int mod(int a, int b);
+int div(int a, int b);
 
 int main() {
-	char line[80];
-	printString("Hello World \0");
-	readString(line);
-	printString(line);
+	char buffer[512];
+	readSector(buffer, 30);
+	printString(buffer);
+
 	while(1){
 	};
 }
@@ -28,8 +30,10 @@ void readString(char* string){
 			break;
 		}
 		else if(character == 0x8){
-			position = position -1;
-			interrupt(0x10, 0xE*256+character, 0, 0, 0);
+			if(position > 1){
+				position = position -1;
+				interrupt(0x10, 0xE*256+character, 0, 0, 0);
+			}
 		}
 		else {
 			string[position] = character;
@@ -37,6 +41,28 @@ void readString(char* string){
 			interrupt(0x10, 0xE*256+character, 0, 0, 0);
 		}
 	}
+	interrupt(0x10, 0xE*256+0xa, 0, 0, 0);
 	string[position] = 0xa;
 	string[position+1]= 0x0;
+}
+void readSector(char* buffer, int sector){
+	int relSec = mod(sector,18)+1;
+	int head= mod(div(sector,18),2);
+	int track = div(sector,36);
+	interrupt(0x13, 2*256+1, buffer, track*256+relSec, head*256+0);
+	
+}
+int mod(int a, int b){
+	while ( a >= b){
+		a = a-b;
+	}
+	return a;
+
+}
+int div(int a, int b){
+	int q = 0;
+	while (q*b <= a){
+		q = q+1;
+	}
+	return q-1;
 }
