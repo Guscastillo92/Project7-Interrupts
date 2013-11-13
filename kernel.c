@@ -4,11 +4,13 @@ void readString(char* string);
 void readSector(char* buffer, int sector);
 int mod(int a, int b);
 int div(int a, int b);
+void handleInterrupt21(int ax, int bx, int cx, int dx);
 
 int main() {
-	char buffer[512];
-	readSector(buffer, 30);
-	printString(buffer);
+	makeInterrupt21();
+	interrupt(0x21,0,0,0,0);
+
+
 
 	while(1){
 	};
@@ -66,3 +68,15 @@ int div(int a, int b){
 	}
 	return q-1;
 }
+void handleInterrupt21(int ax, int bx, int cx, int dx){
+	printString("Testing interrupt 21 \0");
+}
+
+
+
+
+
+
+
+
+
