@@ -69,7 +69,42 @@ int div(int a, int b){
 	return q-1;
 }
 void handleInterrupt21(int ax, int bx, int cx, int dx){
-	printString("Testing interrupt 21 \0");
+	
+	
+	if(ax == 0){
+		while(*bx != '\0'){
+			interrupt(0x10, 0xE*256+*bx, 0, 0, 0);
+			bx= bx+1;
+		}
+	} else if (ax == 1){
+		int base =bx;
+		char character = 0x0;
+		while(character != 0xd){
+			character = interrupt(0x16, 0, 0, 0, 0);
+			if(character == 0xd){
+				break;
+			}
+			else if(character == 0x8){
+				if(bx > base){
+					position = position -1;
+					interrupt(0x10, 0xE*256+character, 0, 0, 0);
+				}
+			}
+			else {
+				*bx = character;
+				position = position +1;
+				interrupt(0x10, 0xE*256+character, 0, 0, 0);
+			}
+		}
+		interrupt(0x10, 0xE*256+0xa, 0, 0, 0);
+		*bx = 0xa;
+		*bx= 0x0;
+
+	} else if (ax == 2){
+
+	} else {
+		
+	}
 }
 
 
